@@ -1,25 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
-import { useRouter } from 'next/router';
 import MainLayout from '@/components/MainLayout';
 
 export default function HomePage() {
-  const { user, loading, logout } = useContext(AuthContext);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/auth/login');
-    }
-  }, [loading, user, router]);
-
-  if (loading) {
-    return <p>Carregando...</p>;
-  }
-
-  if (!user) {
-    return null;
-  }
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div className="min-h-screen flex flex-col">

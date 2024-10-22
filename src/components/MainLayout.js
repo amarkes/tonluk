@@ -12,43 +12,49 @@ export default function MainLayout({ children }) {
 
     useEffect(() => {
         if (!loading && !user) {
-          router.push('/auth/login');
+            router.push('/auth/login');
         }
-      }, [loading, user, router]);
+    }, [loading, user, router]);
 
     if (isLoginPage) {
         // Se for a página de login, renderiza somente o conteúdo sem o layout principal
         return <div className="min-h-screen flex items-center justify-center">{children}</div>;
     }
     return (
-        <div className="min-h-screen flex flex-col">
-            {/* Cabeçalho */}
-            <header className="bg-blue-600 text-white p-4">
-                <nav className="flex space-x-4">
-                    <Link href="/">
-                        Início
-                    </Link>
-                    <Link href="/profile">
-                        Perfil
-                    </Link>
-                    <Link href="/settings">
-                        Configurações
-                    </Link>
-                </nav>
-            </header>
+        <>
+            {loading || !user ? (
+                <div className="min-h-screen flex items-center justify-center">Carregando...</div>
+            ) : (
+                <div className="min-h-screen flex flex-col">
+                    {/* Cabeçalho */}
+                    <header className="bg-blue-600 text-white p-4">
+                        <nav className="flex space-x-4">
+                            <Link href="/">
+                                Início
+                            </Link>
+                            <Link href="/profile">
+                                Perfil
+                            </Link>
+                            <Link href="/settings">
+                                Configurações
+                            </Link>
+                        </nav>
+                    </header>
 
-            {/* Conteúdo Principal */}
-            <div className='flex '>
-                <Sidebar />
-                <main className="flex-1 p-8">
-                    {children}
-                </main>
-            </div>
+                    {/* Conteúdo Principal */}
+                    <div className='flex '>
+                        <Sidebar />
+                        <main className="flex-1 p-8">
+                            {children}
+                        </main>
+                    </div>
 
-            {/* Rodapé */}
-            <footer className="bg-gray-800 text-white p-4 text-center">
-                © 2024 Minha Aplicação
-            </footer>
-        </div>
+                    {/* Rodapé */}
+                    <footer className="bg-gray-800 text-white p-4 text-center">
+                        © 2024 Minha Aplicação
+                    </footer>
+                </div>
+            )}
+        </>
     );
 }

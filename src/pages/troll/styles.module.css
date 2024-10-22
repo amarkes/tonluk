@@ -1,0 +1,30 @@
+.trollContainer {
+    @apply h-screen flex flex-col items-center justify-center bg-gray-100;
+}
+.trollTitle {
+    @apply text-2xl font-bold mb-4;
+}
+.trollSubTitle {
+    @apply text-xl font-bold mb-4;
+}
+.trollPoints {
+    @apply text-xl mb-6;
+}
+.trollMessage {
+    @apply text-lg mb-6 text-red-500 font-semibold;
+}
+.trollClick {
+    @apply w-16 h-16 bg-red-500 rounded-full absolute;
+}
+.trollSuccess {
+    @apply flex flex-col items-center gap-2;
+}
+.trollTitleSuccess {
+    @apply text-4xl font-bold text-green-500;
+}
+.trollButtonAgain {
+    @apply mt-6 px-4 py-2 bg-blue-500 text-white rounded;
+}
+.trollButtonLogin {
+    @apply mt-4 px-4 py-2 bg-green-500 text-black rounded;
+}

@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import MainLayout from '@/components/MainLayout';
 
 function MyApp({ Component, pageProps }) {
+  
   const getLayout = Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
   return (
     <AuthProvider>
